@@ -1,0 +1,68 @@
+# what is the this in the OPP
+
+keyword refer to the object that currently excuting in the code.
+it's basically represent the context in which thee code is being excuted
+
+1. <b>Global Context</b> when used in the gloabl scope (outside of any function)
+   , `this` refer to the global object{" "}
+1. <b>Inside Function</b> value of `this` inside regural function is how the function
+   is called If the function is called as a method of an object, `this` refers to
+   the object itself. Otherwise, in strict mode, `this` is `undefined`, and in non-strict
+   mode, it refers to the global object.
+
+   ```javascript
+   function myFunction() {
+     console.log(this);
+   }
+
+   const obj = {
+     myMethod: myFunction,
+   };
+
+   obj.myMethod(); // `this` refers to `obj`
+
+   myFunction(); // `this` depends on strict mode or not
+   ```
+
+
+1. <b>Constructor function</b>  Inside a constructor function (a function used with the `new` keyword), `this` refers to the newly created instance of the object.
+  
+  
+   ```javascript
+   function Person(name) {
+       this.name = name;
+       console.log(this);
+   }
+
+   const person1 = new Person('Alice'); // `this` refers to `person1`
+   ```
+
+
+1. <b>Call, Apply, and Bind Methods</b>  
+These methods allow you to specify the value of `this` explicitly when calling a function.
+
+
+  ```javascript
+   function greet() {
+       console.log(`Hello, ${this.name}!`);
+   }
+
+   const obj = { name: 'Alice' };
+   greet.call(obj); // `this` refers to `obj`
+   greet.apply(obj); // `this` refers to `obj`
+
+   const boundGreet = greet.bind(obj);
+   boundGreet(); // `this` refers to `obj`
+   ```
+5. **Arrow Functions**: Unlike regular functions, arrow functions do not have their own `this` context. Instead, they inherit `this` from the enclosing lexical context.
+
+   ```javascript
+   const obj = {
+       name: 'Alice',
+       greet: () => {
+           console.log(`Hello, ${this.name}!`);
+       }
+   };
+
+   obj.greet(); // `this` refers to the enclosing lexical context (usually the global object)
+   ```

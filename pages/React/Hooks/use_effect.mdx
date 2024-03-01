@@ -1,0 +1,45 @@
+# useEffect 
+
+The useEffect Hook allows you to perform side effects in your components.such as : fetching data, directly updating the DOM, and timers.
+
+useEffect accepts two arguments. The second argument is optional.
+
+
+```javascript
+useEffect(<function>, <dependency>)
+```
+
+
+but if you don't add the second argument it will runs on every render.
+
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  return (
+    <div>
+      {data ? (
+        <p>Data loaded: {data}</p>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+}
+
+export default App;
+
+
+```
+
+we specify an empty dependency array to indicate that this effect should only run onces when the components mounts.

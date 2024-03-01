@@ -1,0 +1,20 @@
+# useState 
+
+This is the most fundamental hook and allows you to manage state in functional components state act like memeorie and  save your data and update them over the time .
+ It returns an array with two elements: the current state value and a function to update it.
+
+ ```javascript
+ import { useState } from 'react'
+
+const Counter = () => {
+    const [count , setCount] = useState(0);
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
+  )
+}
+
+export default Counter
+ ```
