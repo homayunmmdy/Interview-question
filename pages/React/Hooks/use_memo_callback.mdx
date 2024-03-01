@@ -1,0 +1,44 @@
+# what is the useMemo and useCallback and what is the differece
+
+`useMemo` and `useCallback` are both hooks in React used to optimize performance by memoizing values and functions respectively.
+
+**useMemo:**
+
+- `useMemo` is used to memoize the result of a function so that it is only recalculated when its dependencies change.
+- It takes a function and an array of dependencies, and returns the memoized value of that function.
+- Example:
+
+```jsx
+import React, { useMemo } from "react";
+
+function MyComponent({ a, b }) {
+  const result = useMemo(() => {
+    return a + b;
+  }, [a, b]);
+
+  return <div>{result}</div>;
+}
+```
+
+**useCallback:**
+
+- `useCallback` is used to memoize a function so that it is only recreated when its dependencies change.
+- It takes a function and an array of dependencies, and returns a memoized version of that function.
+- Example:
+
+```jsx
+import React, { useCallback } from "react";
+
+function MyComponent({ onClick }) {
+  const handleClick = useCallback(() => {
+    onClick();
+  }, [onClick]);
+
+  return <button onClick={handleClick}>Click me</button>;
+}
+```
+
+**Comparison:**
+
+- `useMemo` is used to memoize values, while `useCallback` is used to memoize functions.
+- `useMemo` is useful when you want to memoize the result of a complex computation, while `useCallback` is useful when you want to memoize a callback function to avoid unnecessary re-renders.

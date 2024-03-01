@@ -1,0 +1,48 @@
+# Call , bind , Apply in OPP
+
+In JavaScript, `call`, `bind`, and `apply` are methods used to manipulate the context (`this` keyword) of a function. Here's a brief explanation of each with a code example:
+
+1. `call`: Calls a function with a given `this` value and arguments provided individually.
+   
+```javascript
+const obj1 = {
+  name: 'Alice'
+};
+
+function greet(greeting) {
+  return `${greeting}, ${this.name}!`;
+}
+
+console.log(greet.call(obj1, 'Hello')); // Output: Hello, Alice!
+```
+
+2. `apply`: Calls a function with a given `this` value and arguments provided as an array.
+
+```javascript
+const obj2 = {
+  name: 'Bob'
+};
+
+function greet(greeting) {
+  return `${greeting}, ${this.name}!`;
+}
+
+console.log(greet.apply(obj2, ['Hi'])); // Output: Hi, Bob!
+```
+
+3. `bind`: Creates a new function that, when called, has its `this` keyword set to the provided value.
+
+```javascript
+const obj3 = {
+  name: 'Charlie'
+};
+
+function greet(greeting) {
+  return `${greeting}, ${this.name}!`;
+}
+
+const boundGreet = greet.bind(obj3);
+console.log(boundGreet('Hola')); // Output: Hola, Charlie!
+``` 
+
+In all examples, the `this` keyword inside the `greet` function refers to the respective object (`obj1`, `obj2`, or `obj3`) because it's explicitly specified using `call`, `apply`, or `bind`.

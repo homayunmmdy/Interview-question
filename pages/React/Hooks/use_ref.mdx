@@ -1,0 +1,22 @@
+# useRef 
+
+`useRef` is a React Hook used to create a mutable reference to a DOM element or a value that persists across renders. It's like having a variable that you can change without causing re-renders.
+
+```jsx
+import React, { useRef } from 'react';
+
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleClick}>Focus Input</button>
+    </div>
+  );
+}
+```
