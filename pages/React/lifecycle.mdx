@@ -1,0 +1,54 @@
+# what is the life cycle 
+
+Referring to the various stages of the component from construction to remove it containe 3 parts 
+
+<ul>
+<li>
+<b>Mouting : </b>
+when you components is first created and rendered onto the screen.
+
+- constructor()
+- render()
+- componentDidMount()
+
+```
+useEffect(() => {
+  //Mouting
+}, []);
+```
+
+
+</li>
+<li>
+<b>Updating : </b>
+happens when your components state or props change.
+
+- render()
+- componentDidUpdate()
+
+```
+useEffect(() => {
+  // your code
+}, [state]);
+```
+
+
+</li>
+<li>
+<b>Unmounting : </b>
+when your components is removed from screen.
+
+- componentWillUnmount()
+
+```
+useEffect(() => {
+    // you code
+  return (
+    //Unmounting
+  )
+}, [state]);
+```
+
+
+</li>
+</ul>
