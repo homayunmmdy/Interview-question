@@ -1,9 +1,0 @@
-# Differece between arrow function and reguralr function 
-
-1. **Regular Function**:
-   - Has its own `this` context, which is determined by how the function is called.
-   - Suitable for methods or constructors where `this` needs to be dynamic.
-
-2. **Arrow Function**:
-   - Inherits `this` from the enclosing lexical context (the context where the arrow function is defined).
-   - Great for maintaining the outer `this` context, like in callbacks or when you want to access `this` from the parent scope without it being altered.

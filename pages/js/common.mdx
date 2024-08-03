@@ -1,0 +1,118 @@
+# Here are list of the common question that the chance of asking theme is very high
+
+## 1.What is the difference between let and var
+
+You can list out the differences in a tabular format
+
+| var                                                            | let                                                     |
+| -------------------------------------------------------------- | ------------------------------------------------------- |
+| It has been available from the beginning of JavaScript         | Introduced as part of ES6                               |
+| It has function scope                                          | It has block scope                                      |
+| (available throughout the function in which they're declared.) | (only accessible with in the block like {} the declare) |
+| Variable declaration will be hoisted                           | Hoisted but not initialized                             |
+| It is possible to re-declare the variable in the same scope    | It is not possible to re-declare the variable           |
+
+Let's take an example to see the difference,
+
+```JavaScript
+function userDetails(username) {
+  if (username) {
+    console.log(salary); // undefined due to hoisting
+    console.log(age); // ReferenceError: Cannot access 'age' before initialization
+    let age = 30;
+    var salary = 10000;
+  }
+  console.log(salary); //10000 (accessible due to function scope)
+  console.log(age); //error: age is not defined(due to block scope)
+}
+userDetails("John");
+```
+
+## 2. What is the Hoisting
+
+behavior where variables and functions declarations are moved to the top of their containig scope during compile phase,
+before the code executed.
+
+```JavaScript
+console.log(myVar) // undefined
+var myVar = 10
+console.log(myVar) // 10
+
+// Function declaration: STARTS with `function` keyword
+myFun() // Hi
+function myFun() {
+    console.log('Hi')
+}
+// Function expression: DOES NOT START with `function` keyword
+mySum() // ReferenceError: mySum is not defined
+const mySum = (function sumB(a, b) {
+  return a + b;
+});
+
+```
+
+<b>function declaration</b>Are hoisted entirely so they can be called before
+they define
+<b>function expression</b>Are not hoisted
+<b>Var</b> Are Hoisted but not theri initialization this is why show undefined
+<b>let or const</b> Are Hoisted but not theri initialized casuing a `ReferenceError`
+
+## 3. What is the difference between Reference type and primitive type
+
+primitive type
+they save the value and save the data and dat won't change
+
+```javascript
+let num = 5
+let str = 'Hi'
+let bool = true
+let und = undefined (used when we don't decalre value for variable)
+let nul = null (set some value to zero or nothing)
+```
+
+Reference type
+they save the address and their value is change
+let arr = [1,2,3]
+let obj = {name : "alice" , age: 22}
+let func = functions() {console.log('hi')}
+
+## 4. Differece between arrow function and reguralr function
+
+1. **Regular Function**:
+
+   - Has its own `this` context, which is determined by how the function is called.
+   - Suitable for methods or constructors where `this` needs to be dynamic.
+
+2. **Arrow Function**:
+   - Inherits `this` from the enclosing lexical context (the context where the arrow function is defined).
+   - Great for maintaining the outer `this` context, like in callbacks or when you want to access `this` from the parent scope without it being altered.
+
+## 4. How does the `this` keyword work in different content? `this` refer to different object depened on context
+
+```javascript
+console.log(this); //Global context(window in browser)
+
+function showThis() {
+    console.log(this) // Globale context in non-strict mode , undefined in strict mode
+}
+
+const obj = {
+    method: fnction() {
+        console.log(this) //Refers to obj
+    }
+}
+
+obj.method();
+```
+
+## 5. Differece Between Synchronous and Asynchronous which of theme is javascript 
+
+- <b>Synchronous</b> code executed squentially one taskk at time each operation waits for previous one to complete also 
+javascript use that
+
+- Reading a file line by line
+
+- <b>Asynchronous</b> Code excuted without waiting for previous operations to complete, allowing multiple task to run 
+concurrenlty 
+
+- Making an API call while continuing to excute other code.
